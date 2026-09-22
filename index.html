@@ -16,17 +16,24 @@
 </head>
 <body>
     <div id="game-container"></div>
-    <script>
-        window.RufflePlayer = window.RufflePlayer || {};
-        window.addEventListener("load", () => {
-            const ruffle = window.RufflePlayer.newest();
-            const player = ruffle.createPlayer();
-            player.style.width = "100%";
-            player.style.height = "100%";
-            document.getElementById("game-container").appendChild(player);
-            // Loads the game right next to this file
-            player.load("bratzgirlsbeautysalon.swf");
-        });
-    </script>
+<script>
+    window.RufflePlayer = window.RufflePlayer || {};
+    // This forces Ruffle to scale nicely and wait for user clicks gracefully
+    window.RufflePlayer.config = {
+        "autoplay": "on",
+        "unmuteOverlay": "visible"
+    };
+
+    window.addEventListener("load", () => {
+        const ruffle = window.RufflePlayer.newest();
+        const player = ruffle.createPlayer();
+        player.style.width = "100%";
+        player.style.height = "100%";
+        document.getElementById("game-container").appendChild(player);
+        
+        // DOUBLE CHECK: Ensure this matches your exact filename case on GitHub!
+        player.load("bratzgirlsbeautysalon.swf"); 
+    });
+</script>
 </body>
 </html>
